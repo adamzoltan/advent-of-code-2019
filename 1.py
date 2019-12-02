@@ -3,9 +3,24 @@ input = [75592, 56081, 141375, 103651, 132375, 90584, 94148, 85029, 95082, 14849
 def calc_fuel(inp):
     summary = 0
     for i in inp:
-        calc = int(i/3)-2
+        calc = i//3-2
         summary += calc
     return summary
 
-print(calc_fuel(input))
 
+def calc_fuel_pt2(inp):
+    if inp//3-2 <= 0:
+        return 0
+    else:
+        return  inp//3-2 + calc_fuel_pt2(inp//3-2)
+
+def sum_fuel(input_list):
+    summary = 0
+    for i in input_list:
+        summary += calc_fuel_pt2(i)
+    return summary
+    
+if __name__ == "__main__":
+    
+    print(calc_fuel(input))
+    print(sum_fuel(input))
