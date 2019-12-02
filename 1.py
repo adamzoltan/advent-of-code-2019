@@ -7,7 +7,6 @@ def calc_fuel(inp):
         summary += calc
     return summary
 
-
 def calc_fuel_pt2(inp):
     if inp//3-2 <= 0:
         return 0
@@ -19,7 +18,8 @@ def sum_fuel(input_list):
     for i in input_list:
         summary += calc_fuel_pt2(i)
     return summary
-    
+
+
 if __name__ == "__main__":
     
     print(calc_fuel(input))
