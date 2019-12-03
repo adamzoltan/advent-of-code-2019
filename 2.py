@@ -10,10 +10,10 @@ def intcode(inp):
     while inp[position] != 99:
         value_1 = inp[inp[position+1]]
         value_2 = inp[inp[position+2]]
-        if inp[position]  == 1:
+        if inp[position] == 1:
             summary = value_1 + value_2
             inp[inp[position+3]] = summary
-        if inp[position]  == 2:
+        if inp[position] == 2:
             product = value_1 * value_2
             inp[inp[position+3]] = product
         position += 4
