@@ -5,4 +5,18 @@ def gravity_restore(inp):
     inp[2] = 2
     return inp
 
-print(gravity_restore(input))
+def intcode(inp):
+    position = 0
+    position_value = inp[position]
+    result_position = inp[position+3]
+    value_1_position = inp[position+1]
+    value_2_position = inp[position+2]
+    while position_value != 99:
+        if position_value == 1:
+            inp[result_position] = inp[value_1_position] + inp[value_2_position]
+            position += 4
+            position_value = inp[position]
+            print(inp)
+
+
+intcode([1,0,0,0,99])
