@@ -7,16 +7,23 @@ def gravity_restore(inp):
 
 def intcode(inp):
     position = 0
-    position_value = inp[position]
-    result_position = inp[position+3]
-    value_1_position = inp[position+1]
-    value_2_position = inp[position+2]
-    while position_value != 99:
-        if position_value == 1:
-            inp[result_position] = inp[value_1_position] + inp[value_2_position]
+    while inp[position] != 99:
+        if inp[position]  == 1:
+            value_1 = inp[inp[position+1]]
+            value_2 = inp[inp[position+2]]
+            summary = value_1 + value_2
+            inp[inp[position+3]] = summary
             position += 4
-            position_value = inp[position]
-            print(inp)
+        if inp[position]  == 2:
+            value_1 = inp[inp[position+1]]
+            value_2 = inp[inp[position+2]]
+            product = value_1 * value_2
+            inp[inp[position+3]] = product
+            position += 4
+    return inp
 
 
-intcode([1,0,0,0,99])
+if __name__ == "__main__":
+    inp_numbers = gravity_restore(input)
+    result = intcode(inp_numbers)
+    print(result)
